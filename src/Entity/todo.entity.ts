@@ -9,7 +9,10 @@ export class TodoEntity {
     @Column()
     description: string;
     @Column()
-    status: ToDoStatus
+    status: ToDoStatus;
+    // @Column()
+    // createdDate: Date;
+
 }
 
 export enum ToDoStatus {
