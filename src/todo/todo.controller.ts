@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Get, Post, Patch, Param } from '@nestjs/common';
 import { TodoService } from './todo.service';
 
 
@@ -7,13 +7,20 @@ import { TodoService } from './todo.service';
 
 export class TodoController {
 
-    constructor(private todoService:TodoService){}
+    constructor(private todoService: TodoService) { }
 
 
     //http GET verb
     @Get()
     getAllTodos() {
-   
         return this.todoService.getAllTodos();
     }
+
+    @Post()
+    createTodo(@Body() data) {
+        const { title, description } = data;
+
+        return this.todoService.createTodo(title, description)
+    }
+
 }
